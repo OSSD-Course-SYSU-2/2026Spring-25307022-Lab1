@@ -10,6 +10,15 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
+    // ------------------------------------------
+    // 👇 下面这部分是新增的：申请联网权限
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      }
+    ],
+    // 👆 以上是新增内容
+    // ------------------------------------------
     "abilities": [
       {
         "name": "EntryAbility",
@@ -43,7 +52,7 @@
             "name": "ohos.extension.backup",
             "resource": "$profile:backup_config"
           }
-        ],
+        ]
       }
     ]
   }
