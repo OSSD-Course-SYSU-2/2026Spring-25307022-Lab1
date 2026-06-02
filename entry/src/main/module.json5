@@ -2,57 +2,37 @@
   "module": {
     "name": "entry",
     "type": "entry",
-    "description": "$string:module_desc",
+    "description": "音乐播放器主模块",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone"
+      "phone",
+      "tablet"
     ],
-    "deliveryWithInstall": true,
-    "installationFree": false,
+    "deliveryWithInstall": true,  // 👈 修复报错 1：必须配置是否随应用安装分发
     "pages": "$profile:main_pages",
-    // ------------------------------------------
-    // 👇 下面这部分是新增的：申请联网权限
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.INTERNET"
-      }
-    ],
-    // 👆 以上是新增内容
-    // ------------------------------------------
     "abilities": [
       {
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
-        "description": "$string:EntryAbility_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background",
+        "description": "主程序入口",
         "exported": true,
+        "startWindowIcon": "$media:layered_image",       // 👈 修复报错 2：必须配置启动图标
+        "startWindowBackground": "$color:start_window_background", // 👈 修复报错 3：必须配置启动背景色
         "skills": [
           {
             "entities": [
               "entity.system.home"
             ],
             "actions": [
-              "ohos.want.action.home"
+              "action.system.home"
             ]
           }
         ]
       }
     ],
-    "extensionAbilities": [
+    "requestPermissions": [
       {
-        "name": "EntryBackupAbility",
-        "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
-        "type": "backup",
-        "exported": false,
-        "metadata": [
-          {
-            "name": "ohos.extension.backup",
-            "resource": "$profile:backup_config"
-          }
-        ]
+        "name": "ohos.permission.INTERNET"
       }
     ]
   }
